@@ -1,19 +1,14 @@
 package main
 
 import (
+	"IdentityAuthentication/router"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func main() {
+	// 初始路由
 	r := gin.Default()
-	api := r.Group("/api")
-	{
-		api.GET("/ping", func(c *gin.Context) {
-			c.JSON(http.StatusOK,gin.H{
-				"msg": "pong",
-			})
-		})
-	}
+	router.Router(r)
+
 	r.Run()
 }
